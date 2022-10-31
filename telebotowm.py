@@ -4,10 +4,10 @@ from pyowm.utils import timestamps
 from pyowm.utils.config import get_default_config
 import telebot
 
-owm = OWM('e73464495e7acb3bfda36c756dd158f0')
-bot = telebot.TeleBot("5061811891:AAE_NJOu3sX4Ni72oc_QsbgcWc6d7DaRkuM")
+owm = OWM('your_api')#take from https://openweathermap.org/
+bot = telebot.TeleBot("your_api")# take from https://t.me/BotFather
 config_dict = get_default_config()
-config_dict['language'] = 'ru'
+config_dict['language'] = 'your language'
 
 @bot.message_handler(func=lambda message: True)
 def owm1(message):
@@ -16,7 +16,7 @@ def owm1(message):
 	w = observation.weather
 	humidity = w.humidity 
 	temperature = w.temperature('celsius')['temp']
-	answ = "В городе " + message.text  + " сейчас " + str(w. detailed_status) + "\n" + "температура: " + str(round(temperature))  + " по Цельсию" + "\n" + "влажность воздуха  " + str(humidity) + "%" + "\n" 
+	answ = "the temperature: " + str(round(temperature))+"in the city " + message.text  + "is now " + str(w.detailed_status) + "\n"  + " Celsius" + "\n" + "and the humidity of the air " + str(humidity) + "%" + "\n" 
 	bot.reply_to(message, answ)
 
 bot.infinity_polling()
