@@ -1,3 +1,6 @@
+#this bot shows the temperature in a certain city: degrees Celsius, humidity
+
+
 from pyowm import OWM
 from pyowm.utils import config
 from pyowm.utils import timestamps
